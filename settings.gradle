@@ -1,1 +1,1 @@
-include ':mobile', ':wear'
+include ':view', ':wear', ':model', ':presenter'
