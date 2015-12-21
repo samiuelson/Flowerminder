@@ -3,4 +3,5 @@ apply plugin: 'me.tatarka.retrolambda'
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'io.reactivex:rxjava:1.0.0'
 }
