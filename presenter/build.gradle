@@ -3,6 +3,4 @@ apply plugin: 'me.tatarka.retrolambda'
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-
-    compile project(':model')
 }
