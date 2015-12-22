@@ -1,4 +1,6 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.neenbedankt.android-apt' // dbflow
+
 
 android {
     compileSdkVersion 23
@@ -22,4 +24,9 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.1'
+
+    // dbflow
+    apt 'com.github.Raizlabs.DBFlow:dbflow-processor:3.0.0-beta1'
+    compile "com.github.Raizlabs.DBFlow:dbflow-core:3.0.0-beta1"
+    compile "com.github.Raizlabs.DBFlow:dbflow:3.0.0-beta1"
 }

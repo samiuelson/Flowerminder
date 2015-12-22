@@ -1,1 +1,1 @@
-include ':view', ':wear', ':model', ':presenter'
+include ':view', ':presenter', ':data', ':domain', ':wear'
