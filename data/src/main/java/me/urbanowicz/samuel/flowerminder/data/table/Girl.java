@@ -1,4 +1,4 @@
-package me.urbanowicz.samuel.flowerminder.data.entity;
+package me.urbanowicz.samuel.flowerminder.data.table;
 
 import com.raizlabs.android.dbflow.annotation.Column;
 import com.raizlabs.android.dbflow.annotation.ModelContainer;
