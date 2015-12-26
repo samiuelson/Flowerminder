@@ -1,4 +1,4 @@
-package me.urbanowicz.samuel.domain;
+package me.urbanowicz.samuel.domain.algorithm;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
