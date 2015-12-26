@@ -31,6 +31,8 @@ dependencies {
     compile 'com.google.android.gms:play-services:8.3.0'
     compile 'com.android.support:design:23.1.1'
 
+    compile project(':presenter')
+
     wearApp project(':wear')
 
     compile fileTree(dir: 'libs', include: ['*.jar'])
