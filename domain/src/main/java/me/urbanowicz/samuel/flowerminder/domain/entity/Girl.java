@@ -6,5 +6,5 @@ public class Girl extends BaseEntity {
 
     String name;
 
-    List<Flower> flowers;
+    List<FlowerEntity> flowerEntities;
 }
