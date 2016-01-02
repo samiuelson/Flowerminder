@@ -1,5 +1,7 @@
 package me.urbanowicz.samuel.flowerminder.data.table;
 
+import android.support.annotation.ColorInt;
+
 import com.raizlabs.android.dbflow.annotation.Column;
 import com.raizlabs.android.dbflow.annotation.ForeignKey;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
@@ -20,6 +22,7 @@ public class Flower extends BaseModel {
     String name;
 
     @Column
+    @ColorInt
     int color;
 
     @Column
@@ -28,9 +31,32 @@ public class Flower extends BaseModel {
     @ForeignKey(saveForeignKeyModel = false)
     ForeignKeyContainer<Girl> girlForeignKeyContainer;
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public @ColorInt  int getColor() {
+        return color;
+    }
+
+    public void setColor(@ColorInt int color) {
+        this.color = color;
+    }
+
+    public long getPlannedDate() {
+        return plannedDate;
+    }
+
+    public void setPlannedDate(long plannedDate) {
+        this.plannedDate = plannedDate;
+    }
 
     /**
-     * Attach the Flower to the girl
+     * Attach the FlowerEntity row to the girl
      * @param girl loved one
      * @param date planned handing plannedDate
      */
@@ -38,6 +64,5 @@ public class Flower extends BaseModel {
         girlForeignKeyContainer =
                 FlowManager.getContainerAdapter(Girl.class).toForeignKeyContainer(girl);
         this.plannedDate = date;
-
     }
 }
