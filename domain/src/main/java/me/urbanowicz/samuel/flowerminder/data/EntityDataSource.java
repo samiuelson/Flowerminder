@@ -4,6 +4,7 @@ import java.util.List;
 
 public interface EntityDataSource<Entity> {
     void saveEntities(List<Entity> entities);
-    void saveEntity(Entity entity);
+    long saveEntity(Entity entity);
+    void delete(Entity entity);
     List<Entity> getEntities();
 }
