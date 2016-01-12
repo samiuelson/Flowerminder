@@ -31,6 +31,10 @@ public class Flower extends BaseModel {
     @ForeignKey(saveForeignKeyModel = false)
     ForeignKeyContainer<Girl> girlForeignKeyContainer;
 
+    public long getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }
