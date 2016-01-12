@@ -1,5 +1,7 @@
 package me.urbanowicz.samuel.flowerminder.domain.entity;
 
+import java.util.Objects;
+
 public class FlowerEntity extends BaseEntity {
 
     String name;
@@ -51,7 +53,12 @@ public class FlowerEntity extends BaseEntity {
             return false;
         }
         FlowerEntity otherFlower = (FlowerEntity) obj;
-        return getId() == otherFlower.getId();
+
+        return getName().equals(otherFlower.getName())
+                | getColor() == otherFlower.getColor()
+                | getPlannedDate() == otherFlower.getPlannedDate()
+                | Objects.equals(getGirl(), otherFlower.getGirl());
+
         // TODO: 02.01.2016 consider comparing other fields
     }
 }
