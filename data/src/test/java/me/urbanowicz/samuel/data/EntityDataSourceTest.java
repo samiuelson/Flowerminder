@@ -51,7 +51,6 @@ public class EntityDataSourceTest {
     public void should_store_flower() {
         FlowerEntity redRose = createRedRose();
         long id = flowerDataSource.saveEntity(redRose);
-        redRose.setId(id);
 
         final FlowerEntity fetchedFlowerEntity = flowerDataSource.getEntities().get(0);
         assertEquals(redRose, fetchedFlowerEntity);
@@ -74,7 +73,6 @@ public class EntityDataSourceTest {
     public void should_delete_flower() {
         FlowerEntity redRose = createRedRose();
         long id = flowerDataSource.saveEntity(redRose);
-        redRose.setId(id);
 
         List<FlowerEntity> storedFlowers = flowerDataSource.getEntities();
         assertTrue(storedFlowers.contains(redRose));
