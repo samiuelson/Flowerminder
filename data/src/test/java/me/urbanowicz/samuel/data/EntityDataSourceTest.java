@@ -44,7 +44,8 @@ public class EntityDataSourceTest {
     @Test
     public void should_store_flower() {
         FlowerEntity redRose = createRedRose();
-        flowerDataSource.saveEntity(redRose);
+        long id = flowerDataSource.saveEntity(redRose);
+        redRose.setId(id);
 
         final FlowerEntity fetchedFlowerEntity = flowerDataSource.getEntities().get(0);
         assertEquals(redRose, fetchedFlowerEntity);
