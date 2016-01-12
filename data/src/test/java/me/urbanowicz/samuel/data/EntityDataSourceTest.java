@@ -4,6 +4,7 @@ import android.graphics.Color;
 
 import com.raizlabs.android.dbflow.config.FlowManager;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -36,6 +37,11 @@ public class EntityDataSourceTest {
         flowerDataSource = new FlowerDataSource();
     }
 
+    @After
+    public void reset() {
+        FlowManager.destroy();
+    }
+
     @Test
     public void should_pass_dummy_test() throws Exception {
         assertEquals(4, 2 + 2);
@@ -61,7 +67,7 @@ public class EntityDataSourceTest {
 
         flowerDataSource.saveEntities(flowerEntitiesToBeStored);
 
-        flowerDataSource.getEntities().containsAll(flowerEntitiesToBeStored);
+        flowerDataSource.getEntities().containsAll(flowerEntitiesToBeStored); // FIXME: 12.01.2016 is that .containsAll use equals() method? no FlowerEntity.setId() called
     }
 
     @Test
