@@ -10,7 +10,7 @@ import me.urbanowicz.samuel.flowerminder.data.table.Flower_Table;
 import me.urbanowicz.samuel.flowerminder.domain.entity.FlowerEntity;
 
 
-public class FlowerDataSource implements EntityDataSource<FlowerEntity> {
+public class FlowerDataStore implements DataStore<FlowerEntity> {
 
     @Override
     public void saveEntities(List<FlowerEntity> flowerEntities) {

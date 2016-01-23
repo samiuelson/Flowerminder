@@ -4,13 +4,10 @@ import java.util.Objects;
 
 public class FlowerEntity extends BaseEntity {
 
-    String name;
-
-    int color;
-
-    long plannedDate;
-
-    Girl girl;
+    private String name;
+    private int color;
+    private long plannedDate;
+    private Girl girl;
 
     public String getName() {
         return name;
@@ -55,9 +52,9 @@ public class FlowerEntity extends BaseEntity {
         FlowerEntity otherFlower = (FlowerEntity) obj;
 
         return getName().equals(otherFlower.getName())
-                | getColor() == otherFlower.getColor()
-                | getPlannedDate() == otherFlower.getPlannedDate()
-                | Objects.equals(getGirl(), otherFlower.getGirl());
+                & getColor() == otherFlower.getColor()
+                & getPlannedDate() == otherFlower.getPlannedDate()
+                & Objects.equals(getGirl(), otherFlower.getGirl());
 
         // TODO: 02.01.2016 consider comparing other fields
     }
