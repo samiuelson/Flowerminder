@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import me.urbanowicz.samuel.flowerminder.data.FlowerDataSource;
+import me.urbanowicz.samuel.flowerminder.data.FlowerDataStore;
 import me.urbanowicz.samuel.flowerminder.domain.entity.FlowerEntity;
 
 import static org.junit.Assert.assertEquals;
@@ -28,13 +28,13 @@ import static org.junit.Assert.assertTrue;
  */
 @RunWith(RobolectricTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = 21, manifest = "src/main/AndroidManifest.xml")
-public class EntityDataSourceTest {
-    private FlowerDataSource flowerDataSource;
+public class DataStoreTest {
+    private FlowerDataStore flowerDataSource;
 
     @Before
     public void init() {
         FlowManager.init(RuntimeEnvironment.application.getApplicationContext());
-        flowerDataSource = new FlowerDataSource();
+        flowerDataSource = new FlowerDataStore();
     }
 
     @After
@@ -50,7 +50,7 @@ public class EntityDataSourceTest {
     @Test
     public void should_store_flower() {
         FlowerEntity redRose = createRedRose();
-        long id = flowerDataSource.saveEntity(redRose);
+        flowerDataSource.saveEntity(redRose);
 
         final FlowerEntity fetchedFlowerEntity = flowerDataSource.getEntities().get(0);
         assertEquals(redRose, fetchedFlowerEntity);
@@ -66,13 +66,16 @@ public class EntityDataSourceTest {
 
         flowerDataSource.saveEntities(flowerEntitiesToBeStored);
 
-        flowerDataSource.getEntities().containsAll(flowerEntitiesToBeStored); // FIXME: 12.01.2016 is that .containsAll use equals() method? no FlowerEntity.setId() called
+        assertTrue(flowerDataSource.getEntities().containsAll(flowerEntitiesToBeStored));
+
+        flowerEntitiesToBeStored.add(createWhiteRose());
+        assertFalse(flowerDataSource.getEntities().containsAll(flowerEntitiesToBeStored));
     }
 
     @Test
     public void should_delete_flower() {
         FlowerEntity redRose = createRedRose();
-        long id = flowerDataSource.saveEntity(redRose);
+        redRose.setId(flowerDataSource.saveEntity(redRose));
 
         List<FlowerEntity> storedFlowers = flowerDataSource.getEntities();
         assertTrue(storedFlowers.contains(redRose));
