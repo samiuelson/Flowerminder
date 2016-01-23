@@ -3,7 +3,7 @@ apply plugin: 'me.tatarka.retrolambda'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    buildToolsVersion '21.1.2'
 
     defaultConfig {
         applicationId "me.urbanowicz.samuel.flowerminder"
@@ -25,17 +25,4 @@ android {
 }
 
 dependencies {
-    compile project(':presenter')
-
-    compile 'com.android.support:appcompat-v7:23.1.1'
-    compile 'com.google.android.gms:play-services:8.3.0'
-    compile 'com.android.support:design:23.1.1'
-
-    compile project(':presenter')
-
-    wearApp project(':wear')
-
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-
-    testCompile 'junit:junit:4.12'
 }
