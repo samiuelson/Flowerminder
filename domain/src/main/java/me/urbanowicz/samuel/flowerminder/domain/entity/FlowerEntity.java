@@ -54,8 +54,6 @@ public class FlowerEntity extends BaseEntity {
         return getName().equals(otherFlower.getName())
                 & getColor() == otherFlower.getColor()
                 & getPlannedDate() == otherFlower.getPlannedDate()
-                & Objects.equals(getGirl(), otherFlower.getGirl());
-
-        // TODO: 02.01.2016 consider comparing other fields
+                & Objects.equals(getGirl(), otherFlower.getGirl()); //Fixme for api < 19
     }
 }
