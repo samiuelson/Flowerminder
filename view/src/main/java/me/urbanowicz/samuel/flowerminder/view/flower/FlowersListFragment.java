@@ -16,6 +16,7 @@ import me.urbanowicz.samuel.flowerminder.R;
 public class FlowersListFragment extends Fragment {
 
     private RecyclerView flowersRecyclerView;
+    private FlowersAdapter flowersAdapter;
 
     public static FlowersListFragment newInstance() {
 
@@ -38,7 +39,7 @@ public class FlowersListFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         flowersRecyclerView = (RecyclerView) view.findViewById(R.id.flowersRecyclerView);
-
-
+        flowersAdapter = new FlowersAdapter();
+        flowersRecyclerView.setAdapter(flowersAdapter);
     }
 }

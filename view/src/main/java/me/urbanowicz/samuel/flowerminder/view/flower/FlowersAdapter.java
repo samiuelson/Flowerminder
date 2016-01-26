@@ -13,7 +13,7 @@ import me.urbanowicz.samuel.flowerminder.presenter.model.FlowerViewModel;
 
 public class FlowersAdapter extends RecyclerView.Adapter<FlowersAdapter.FlowerViewHolder> {
 
-    ArrayList<FlowerViewModel> flowers = new ArrayList<>();
+    private ArrayList<FlowerViewModel> flowers = new ArrayList<>();
 
     @Override
     public FlowerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
