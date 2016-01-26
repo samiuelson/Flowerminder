@@ -1,9 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.neenbedankt.android-apt'
 
-sourceCompatibility = 1.7
-targetCompatibility = 1.7
-
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
@@ -20,10 +17,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
-    }
 }
 
 dependencies {
@@ -32,6 +25,7 @@ dependencies {
     testCompile 'org.robolectric:robolectric:3.0'
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile project(':domain')
+
     // dbflow
     apt 'com.github.Raizlabs.DBFlow:dbflow-processor:3.0.0-beta1'
     compile 'com.github.Raizlabs.DBFlow:dbflow-core:3.0.0-beta1'
