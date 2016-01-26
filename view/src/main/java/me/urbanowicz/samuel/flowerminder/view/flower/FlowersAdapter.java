@@ -1,6 +1,5 @@
 package me.urbanowicz.samuel.flowerminder.view.flower;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +22,11 @@ public class FlowersAdapter extends RecyclerView.Adapter<FlowersAdapter.FlowerVi
 
     @Override
     public FlowerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new FlowerViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.flowers_recycler_item, parent, false));
+        return new FlowerViewHolder(
+                LayoutInflater.
+                from(parent.getContext())
+                .inflate(R.layout.flowers_recycler_item, parent, false)
+        );
     }
 
     @Override
