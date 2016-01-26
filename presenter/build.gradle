@@ -1,6 +1,9 @@
 apply plugin: 'com.android.library'
 apply plugin: 'me.tatarka.retrolambda'
 
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
