@@ -4,8 +4,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 import me.urbanowicz.samuel.flowerminder.R;
 import me.urbanowicz.samuel.flowerminder.presenter.model.FlowerViewModel;
@@ -14,6 +16,11 @@ public class FlowersAdapter extends RecyclerView.Adapter<FlowersAdapter.FlowerVi
 
     ArrayList<FlowerViewModel> flowers = new ArrayList<>();
 
+    public void setItems(Collection<FlowerViewModel> flowerViewModels) {
+        flowers.clear();
+        flowers.addAll(flowerViewModels);
+    }
+
     @Override
     public FlowerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return new FlowerViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.flowers_recycler_item, parent, false));
@@ -21,18 +28,20 @@ public class FlowersAdapter extends RecyclerView.Adapter<FlowersAdapter.FlowerVi
 
     @Override
     public void onBindViewHolder(FlowerViewHolder holder, int position) {
-
+        holder.flowerNameTextView.setText(flowers.get(position).getName());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return flowers.size();
     }
 
     class FlowerViewHolder extends RecyclerView.ViewHolder {
+        final TextView flowerNameTextView;
 
         public FlowerViewHolder(View itemView) {
             super(itemView);
+            flowerNameTextView = (TextView) itemView.findViewById(R.id.flowerNameTextView);
         }
     }
 }
