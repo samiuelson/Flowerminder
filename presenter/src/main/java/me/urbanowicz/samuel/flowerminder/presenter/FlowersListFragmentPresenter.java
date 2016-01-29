@@ -32,6 +32,7 @@ public class FlowersListFragmentPresenter {
         FlowerEntity flowerEntity = new FlowerEntity();
         flowerEntity.setName("Dummy Rose");
         flowerDataStore.saveEntity(flowerEntity);
+        flowersListUI.onLoadFlowers(fetchFlowersFromDb());
     }
 
 
