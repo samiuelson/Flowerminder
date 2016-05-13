@@ -1,1 +1,0 @@
-include ':view', ':presenter', ':data', ':domain', ':wear'
