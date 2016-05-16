@@ -6,7 +6,7 @@ android {
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId 'me.urbanowicz.samuel.flowerminder'
+        applicationId 'me.urbanowicz.samuel.me.urbanowicz.samuel.flowerminder'
         minSdkVersion 18
         targetSdkVersion 23
         versionCode 1
@@ -21,9 +21,10 @@ android {
 
     productFlavors {
         mocked {
-            applicationIdSuffix = ".mock"
+            applicationIdSuffix = ".mocked"
         }
         production {
+            applicationIdSuffix = ".production"
         }
     }
 }
