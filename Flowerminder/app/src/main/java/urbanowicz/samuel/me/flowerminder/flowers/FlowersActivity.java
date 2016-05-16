@@ -20,8 +20,12 @@ public class FlowersActivity extends AppCompatActivity {
 
         if (flowersFragment == null) {
             flowersFragment = FlowersFragment.newInstance();
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.container, flowersFragment)
+                    .commit();
         }
 
         FlowersPresenter presenter = new FlowersPresenter(flowersFragment);
+
     }
 }

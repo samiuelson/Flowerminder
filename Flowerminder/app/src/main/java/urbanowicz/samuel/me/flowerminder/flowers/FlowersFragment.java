@@ -36,6 +36,7 @@ public class FlowersFragment extends Fragment implements FlowersContract.View {
 
     @Override
     public void onResume() {
+        super.onResume();
         presenter.start();
     }
 

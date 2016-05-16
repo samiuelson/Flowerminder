@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">Flowerminder</string>
-    <string name="flowers_no_items">No flowers</string>
+    <string name="flowers_no_items">No flowers yet</string>
 </resources>
