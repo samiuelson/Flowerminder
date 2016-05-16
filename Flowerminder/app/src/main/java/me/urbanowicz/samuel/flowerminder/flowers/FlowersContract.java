@@ -1,8 +1,8 @@
-package urbanowicz.samuel.me.flowerminder.flowers;
+package me.urbanowicz.samuel.flowerminder.flowers;
 
-import urbanowicz.samuel.me.flowerminder.BasePresenter;
-import urbanowicz.samuel.me.flowerminder.BaseView;
-import urbanowicz.samuel.me.flowerminder.data.Flower;
+import me.urbanowicz.samuel.flowerminder.BasePresenter;
+import me.urbanowicz.samuel.flowerminder.BaseView;
+import me.urbanowicz.samuel.flowerminder.data.Flower;
 
 public interface FlowersContract {
 

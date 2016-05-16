@@ -1,6 +1,6 @@
-package urbanowicz.samuel.me.flowerminder.flowers;
+package me.urbanowicz.samuel.flowerminder.flowers;
 
-import urbanowicz.samuel.me.flowerminder.data.Flower;
+import me.urbanowicz.samuel.flowerminder.data.Flower;
 
 public class FlowersPresenter implements FlowersContract.Presenter {
 

@@ -1,11 +1,10 @@
-package urbanowicz.samuel.me.flowerminder.flowers;
+package me.urbanowicz.samuel.flowerminder.flowers;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 
-import urbanowicz.samuel.me.flowerminder.R;
+import me.urbanowicz.samuel.flowerminder.R;
 
 public class FlowersActivity extends AppCompatActivity {
 

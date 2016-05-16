@@ -1,4 +1,4 @@
-package urbanowicz.samuel.me.flowerminder.data;
+package me.urbanowicz.samuel.flowerminder.data;
 
 public class Girl {
     private String name;

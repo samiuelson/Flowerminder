@@ -1,4 +1,4 @@
-package urbanowicz.samuel.me.flowerminder.data.store;
+package me.urbanowicz.samuel.flowerminder.data.store;
 
 /**
  * Interface defining functionality of repository for entities

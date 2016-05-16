@@ -1,4 +1,4 @@
-package urbanowicz.samuel.me.flowerminder;
+package me.urbanowicz.samuel.flowerminder;
 
 public interface BasePresenter {
     void start();

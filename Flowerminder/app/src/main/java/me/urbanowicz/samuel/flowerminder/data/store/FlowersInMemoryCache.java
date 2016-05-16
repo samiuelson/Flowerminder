@@ -1,9 +1,9 @@
-package urbanowicz.samuel.me.flowerminder.data.store;
+package me.urbanowicz.samuel.flowerminder.data.store;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import urbanowicz.samuel.me.flowerminder.data.Flower;
+import me.urbanowicz.samuel.flowerminder.data.Flower;
 
 public class FlowersInMemoryCache implements DataStore<Flower> {
     private List<Flower> flowers = new ArrayList<>();
