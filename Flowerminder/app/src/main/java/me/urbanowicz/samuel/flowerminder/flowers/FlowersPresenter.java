@@ -31,6 +31,16 @@ public class FlowersPresenter implements FlowersContract.Presenter {
     }
 
     @Override
+    public void actionConfigure() {
+        flowersView.showToast("Not implemented");
+    }
+
+    @Override
+    public void actionInfo() {
+        flowersView.showToast("Not implemented");
+    }
+
+    @Override
     public void start() {
         loadTasks();
     }

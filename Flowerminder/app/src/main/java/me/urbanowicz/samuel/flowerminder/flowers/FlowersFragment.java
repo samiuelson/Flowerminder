@@ -8,8 +8,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import me.urbanowicz.samuel.flowerminder.R;
 import me.urbanowicz.samuel.flowerminder.data.Flower;
@@ -71,6 +73,11 @@ public class FlowersFragment extends Fragment implements FlowersContract.View {
     }
 
     @Override
+    public void showToast(String string) {
+        Toast.makeText(getActivity(), string, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
     public void setPresenter(FlowersContract.Presenter presenter) {
         this.presenter = presenter;
     }
@@ -78,5 +85,18 @@ public class FlowersFragment extends Fragment implements FlowersContract.View {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.flowers_fragment_menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.config:
+                presenter.actionConfigure();
+                return true;
+            case R.id.info:
+                presenter.actionInfo();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
