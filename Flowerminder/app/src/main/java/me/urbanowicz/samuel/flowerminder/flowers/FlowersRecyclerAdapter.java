@@ -45,7 +45,7 @@ public class FlowersRecyclerAdapter extends RecyclerView.Adapter<FlowersRecycler
         Flower flower = flowers.get(position);
         holder.flower.setColorFilter(flower.getColor().getColor());
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE dd/MM/yyyy", Locale.getDefault());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE dd MMMM yyyy", Locale.getDefault());
         holder.date.setText(dateFormat.format(flower.getDate()));
     }
 
