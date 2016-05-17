@@ -20,12 +20,19 @@ android {
     }
 
     productFlavors {
+        prod {
+        }
         mocked {
             applicationIdSuffix = ".mocked"
         }
-        production {
-            applicationIdSuffix = ".production"
-        }
+    }
+
+    // Remove mockedRelease flavor from build variants
+    android.variantFilter {
+        variant ->
+            if (variant.buildType.name.equals('release') && variant.getFlavors().get(0).name.equals("mocked")) {
+                variant.setIgnore(true);
+            }
     }
 }
 
