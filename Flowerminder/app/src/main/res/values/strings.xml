@@ -3,4 +3,5 @@
     <string name="flowers_no_items">No flowers yet</string>
     <string name="flowers_fragment_menu_configure">Configure</string>
     <string name="flowers_fragment_menu_info">Info</string>
+    <string name="flowers_fragment_title">Flowers</string>
 </resources>
