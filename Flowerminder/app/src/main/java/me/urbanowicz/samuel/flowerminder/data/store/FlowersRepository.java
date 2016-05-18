@@ -2,17 +2,17 @@ package me.urbanowicz.samuel.flowerminder.data.store;
 
 import me.urbanowicz.samuel.flowerminder.data.Flower;
 
-public class FlowersRepository implements DataStore<Flower> {
+public class FlowersRepository implements DataStore.MultipleEntities<Flower> {
 
-    private DataStore<Flower> inMemoryCache;
+    private DataStore.MultipleEntities<Flower> inMemoryCache;
 
     private static FlowersRepository INSTANCE;
 
-    private FlowersRepository(DataStore<Flower> inMemoryDataStore) {
+    private FlowersRepository(DataStore.MultipleEntities<Flower> inMemoryDataStore) {
         this.inMemoryCache = inMemoryDataStore;
     }
 
-    public static synchronized FlowersRepository getInstance(DataStore<Flower> inMemoryCache) {
+    public static synchronized FlowersRepository getInstance(DataStore.MultipleEntities<Flower> inMemoryCache) {
         if (INSTANCE == null) {
             INSTANCE = new FlowersRepository(inMemoryCache);
         }

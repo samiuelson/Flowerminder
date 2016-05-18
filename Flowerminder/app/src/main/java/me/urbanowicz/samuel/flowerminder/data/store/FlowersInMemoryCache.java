@@ -5,7 +5,7 @@ import java.util.List;
 
 import me.urbanowicz.samuel.flowerminder.data.Flower;
 
-public class FlowersInMemoryCache implements DataStore<Flower> {
+public class FlowersInMemoryCache implements DataStore.MultipleEntities<Flower> {
     private List<Flower> flowers = new ArrayList<>();
 
     @Override

@@ -7,7 +7,7 @@ import java.util.List;
 import me.urbanowicz.samuel.flowerminder.data.Flower;
 import me.urbanowicz.samuel.flowerminder.data.FlowerColor;
 
-public class FakeFlowersInMemoryCache implements DataStore<Flower> {
+public class FakeFlowersInMemoryCache implements DataStore.MultipleEntities<Flower> {
 
     private static List<Flower> flowers = new ArrayList<>();
 
@@ -18,6 +18,9 @@ public class FakeFlowersInMemoryCache implements DataStore<Flower> {
             Flower flower = new Flower(FlowerColor.values() [i % FlowerColor.values().length], date);
             flowers.add(flower);
         }
+
+        // generate upcomming flower
+
     }
 
     @Override
