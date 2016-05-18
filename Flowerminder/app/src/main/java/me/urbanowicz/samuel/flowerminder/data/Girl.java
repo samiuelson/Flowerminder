@@ -15,4 +15,47 @@ public class Girl {
      */
     private Map<String, Date> importantAnniversariesDates;
 
+    public Girl(String name, int desiredFlowersPerMonth, int eyesColor, int hairColor) {
+        this.name = name;
+        this.desiredFlowersPerMonth = desiredFlowersPerMonth;
+        this.eyesColor = eyesColor;
+        this.hairColor = hairColor;
+    }
+
+    public static class Builder {
+        String name;
+        int desiredFlowersPerMonth;
+        int eyesColor;
+        int hairColor;
+
+        public Builder withName(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder withDesiredFlowersPerMonth(int desiredFlowersPerMonth) {
+            this.desiredFlowersPerMonth = desiredFlowersPerMonth;
+            return this;
+        }
+
+        public Builder withEyesColor(int eyesColor) {
+            this.eyesColor = eyesColor;
+            return this;
+        }
+
+        public Builder withHairColor(int hairColor) {
+            this.hairColor = hairColor;
+            return this;
+        }
+
+        public Girl build() {
+            return new Girl(
+                    name,
+                    desiredFlowersPerMonth,
+                    eyesColor,
+                    hairColor
+            );
+
+        }
+    }
 }
