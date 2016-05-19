@@ -4,12 +4,12 @@ import me.urbanowicz.samuel.flowerminder.data.Flower;
 
 public class FlowersRepository implements DataStore.MultipleEntities<Flower> {
 
-    private DataStore.MultipleEntities<Flower> inMemoryCache;
+    private DataStore.MultipleEntities<Flower> flowersStorage;
 
     private static FlowersRepository INSTANCE;
 
     private FlowersRepository(DataStore.MultipleEntities<Flower> inMemoryDataStore) {
-        this.inMemoryCache = inMemoryDataStore;
+        this.flowersStorage = inMemoryDataStore;
     }
 
     public static synchronized FlowersRepository getInstance(DataStore.MultipleEntities<Flower> inMemoryCache) {
@@ -19,19 +19,22 @@ public class FlowersRepository implements DataStore.MultipleEntities<Flower> {
         return INSTANCE;
     }
 
+    public static void destroyInstance() {
+        INSTANCE = null;
+    }
+
     @Override
     public void save(Flower entity) {
-        inMemoryCache.save(entity);
+        flowersStorage.save(entity);
     }
 
     @Override
     public void delete(Flower entity) {
-        inMemoryCache.delete(entity);
+        flowersStorage.delete(entity);
     }
 
     @Override
     public Iterable<Flower> getAll() {
-        return inMemoryCache.getAll();
+        return flowersStorage.getAll();
     }
-
 }

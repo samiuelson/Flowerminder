@@ -7,6 +7,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import me.urbanowicz.samuel.flowerminder.data.Girl;
+import me.urbanowicz.samuel.flowerminder.data.Mocks;
 
 import static org.mockito.Mockito.verify;
 
@@ -35,17 +36,12 @@ public class GirlRepositoryTest {
     public void
     save_savesGirlToGirlStorage() {
         // Given a Girl object
-        final Girl.Builder builder = new Girl.Builder();
-        builder.withName("Mia");
-        builder.withDesiredFlowersPerMonth(3);
-        builder.withEyesColor(0x6B442B);
-        builder.withHairColor(0x382F29);
-        final Girl girl = builder.build();
+        final Girl girl = Mocks.generateGirl();
 
         // When girl is saved to GirlRepository
         girlRepository.save(girl);
 
-        // Then persistence repository is called
+        // Then storage repository is called
         verify(girlStorage).save(girl);
     }
 
@@ -58,7 +54,7 @@ public class GirlRepositoryTest {
         // When she is deleted from GirlRepository
         girlRepository.delete(girl);
 
-        // Then persistence repository is called
+        // Then persistence storage is called
         verify(girlStorage).delete(girl);
     }
 
@@ -69,7 +65,7 @@ public class GirlRepositoryTest {
         // When GirlRepository queried to get Girl
         girlRepository.get();
 
-        // Then it should call GirlStorage
+        // Then it should call storage
         verify(girlStorage).get();
     }
 

@@ -8,12 +8,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import java.util.Date;
-import java.util.Random;
-
 import me.urbanowicz.samuel.flowerminder.data.Flower;
-import me.urbanowicz.samuel.flowerminder.data.FlowerColor;
 import me.urbanowicz.samuel.flowerminder.data.Girl;
+import me.urbanowicz.samuel.flowerminder.data.Mocks;
 import me.urbanowicz.samuel.flowerminder.data.store.FlowersRepository;
 
 import static org.junit.Assert.assertNotNull;
@@ -34,36 +31,23 @@ public class FlowerGeneratorTest {
     setupBeforeTest() {
         MockitoAnnotations.initMocks(this);
         Mockito.when(flowersRepository.getAll()).thenReturn(Lists.newArrayList(
-                generateRandomFlower(),
-                generateRandomFlower(),
-                generateRandomFlower()
+                Mocks.generateRandomFlower(),
+                Mocks.generateRandomFlower(),
+                Mocks.generateRandomFlower()
                 )
         );
 
-        Mockito.when(girl).thenReturn(generateGirl());
+        Mockito.when(girl).thenReturn(Mocks.generateGirl());
         flowerGenerator = new FlowerGenerator(girl, flowersRepository.getAll());
     }
 
     @Test
     public void
-    shouldGenerateFlower() {
+    generateFlowersForNextMonth_shouldGenerateProperFlowers() {
         Iterable<Flower> flowers = flowerGenerator.generateFlowersForNextMonth();
 
         assertNotNull("Flowers are null", flowers);
     }
 
-    static Flower generateRandomFlower() {
-        int rand = Math.abs(new Random().nextInt());
-        int colorId = rand % FlowerColor.values().length;
-        return new Flower(FlowerColor.values()[colorId], new Date());
-    }
 
-    static Girl generateGirl() {
-        Girl.Builder builder = new Girl.Builder();
-        builder.withName("Mia");
-        builder.withDesiredFlowersPerMonth(3);
-        builder.withEyesColor(0x6B442B);
-        builder.withHairColor(0x382F29);
-        return builder.build();
-    }
 }
