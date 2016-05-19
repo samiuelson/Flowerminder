@@ -19,34 +19,39 @@ public class FlowerGeneratorTest {
 
     FlowerGenerator flowerGenerator;
 
-    @Mock
     Girl girl;
 
     @Mock
     FlowersRepository flowersRepository;
 
-
     @Before
     public void
     setupBeforeTest() {
         MockitoAnnotations.initMocks(this);
-        Mockito.when(flowersRepository.getAll()).thenReturn(Lists.newArrayList(
-                Mocks.generateRandomFlower(),
-                Mocks.generateRandomFlower(),
-                Mocks.generateRandomFlower()
-                )
-        );
 
-        Mockito.when(girl).thenReturn(Mocks.generateGirl());
+        // Return mocked flowers Iterable<Flower> when getAll() called
+        Mockito
+                .when(flowersRepository.getAll())
+                .thenReturn(
+                        Lists.newArrayList(
+                                Mocks.generateRandomFlower(),
+                                Mocks.generateRandomFlower(),
+                                Mocks.generateRandomFlower())
+                );
+
+        girl = Mocks.generateGirl();
         flowerGenerator = new FlowerGenerator(girl, flowersRepository.getAll());
     }
 
     @Test
     public void
     generateFlowersForNextMonth_shouldGenerateProperFlowers() {
+        assertNotNull(flowersRepository.getAll());
+
         Iterable<Flower> flowers = flowerGenerator.generateFlowersForNextMonth();
 
         assertNotNull("Flowers are null", flowers);
+
     }
 
 
