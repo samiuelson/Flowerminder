@@ -35,7 +35,7 @@ public class FlowersRepositoryTest {
     public void
     save_savesFlowerToFlowersStorage() {
         // Given Flower object
-        final Flower flower = Mocks.generateRandomFlower();
+        final Flower flower = Mocks.generateRandomFlowerForPastDate();
 
         // When flower is saved into repository
         flowersRepository.save(flower);
@@ -48,7 +48,7 @@ public class FlowersRepositoryTest {
     public void
     delete_deletesFlowerFromFlowersStorage() {
         // Given Flower object
-        final Flower flower = Mocks.generateRandomFlower();
+        final Flower flower = Mocks.generateRandomFlowerForPastDate();
 
         // When flower is deleted from repository
         flowersRepository.delete(flower);

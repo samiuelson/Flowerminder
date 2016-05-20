@@ -1,21 +1,15 @@
 package me.urbanowicz.samuel.flowerminder.data.generator;
 
-import android.util.Log;
-
 import com.google.common.collect.Lists;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Vector;
 
 import me.urbanowicz.samuel.flowerminder.data.Flower;
 import me.urbanowicz.samuel.flowerminder.data.Girl;
 import rx.Observable;
-import rx.functions.Action0;
-import rx.functions.Action1;
-import rx.functions.Func1;
-import rx.functions.Func2;
+import rx.Observer;
 
 public class FlowerGenerator {
     private static final String TAG = FlowerGenerator.class.getSimpleName();
@@ -28,23 +22,40 @@ public class FlowerGenerator {
     }
 
     public Iterable<Flower> generateFlowersForNextMonth() {
-        Observable.from(flowers)
-                .filter( // look for Flowers with future dates
-                        flower -> flower.getDate().compareTo(new Date()) > 0
-                )
-                .subscribe(
-                        flower -> flowers.remove(flower),
-                        throwable -> Log.e(TAG, throwable.getMessage()),
-                        new Action0() { //on finish
-                            @Override
-                            public void call() {
-
-                            }
-                        })
-        ;
+        deleteAnyFutureFlowers(flowers);
 
         Iterable<Flower> nextMonthFlowers = new ArrayList<>();
         // todo generate next month flowers
+        int desiredFlowersPerMonth = girl.getDesiredFlowersPerMonth();
+
         return nextMonthFlowers;
+    }
+
+    //default
+    static List<Flower> deleteAnyFutureFlowers(List<Flower> flowers) {
+        final List<Flower> flowersFromPast = Lists.newArrayList();
+
+        Observable<Flower> flowersObservable = Observable.from(flowers);
+        // look for Flowers with future dates
+        flowersObservable
+                .filter(flower -> flower.getDate().compareTo(new Date()) < 0)
+                .toList()
+                .subscribe(new Observer<List<Flower>>() {
+                    @Override
+                    public void onCompleted() {
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                    }
+
+                    @Override
+                    public void onNext(List<Flower> flowers) {
+                        flowersFromPast.addAll(flowers);
+
+                    }
+                });
+
+        return flowersFromPast;
     }
 }

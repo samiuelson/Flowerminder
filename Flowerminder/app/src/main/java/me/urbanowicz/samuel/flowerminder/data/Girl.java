@@ -22,6 +22,26 @@ public class Girl {
         this.hairColor = hairColor;
     }
 
+    public Map<String, Date> getImportantAnniversariesDates() {
+        return importantAnniversariesDates;
+    }
+
+    public int getHairColor() {
+        return hairColor;
+    }
+
+    public int getEyesColor() {
+        return eyesColor;
+    }
+
+    public int getDesiredFlowersPerMonth() {
+        return desiredFlowersPerMonth;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public static class Builder {
         String name;
         int desiredFlowersPerMonth;

@@ -18,13 +18,16 @@ public class FlowersPresenter implements FlowersContract.Presenter {
 
     @Override
     public void loadTasks() {
-        flowersView.displayLoadingIndicator(true);
+        Handler handler = new Handler();
+        handler.post(() -> flowersView.displayLoadingIndicator(true));
+
         if (flowersRepository.getAll().iterator().hasNext()) {
             flowersView.displayFlowers(flowersRepository.getAll());
         } else {
             flowersView.displayNoFlowersInfo();
         }
-        flowersView.displayLoadingIndicator(false);
+
+        handler.postDelayed(() -> flowersView.displayLoadingIndicator(false), 5000);
     }
 
     @Override
