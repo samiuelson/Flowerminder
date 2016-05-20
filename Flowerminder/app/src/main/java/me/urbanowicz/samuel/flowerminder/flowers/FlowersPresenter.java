@@ -1,5 +1,7 @@
 package me.urbanowicz.samuel.flowerminder.flowers;
 
+import android.os.Handler;
+
 import me.urbanowicz.samuel.flowerminder.data.Flower;
 import me.urbanowicz.samuel.flowerminder.data.store.FlowersRepository;
 
@@ -38,6 +40,14 @@ public class FlowersPresenter implements FlowersContract.Presenter {
     @Override
     public void actionInfo() {
         flowersView.showToast("Not implemented");
+    }
+
+    @Override
+    public void actionRefresh() {
+        // todo re-generate flowers with future dates
+        Handler handler = new Handler();
+        handler.post(() -> flowersView.displayLoadingIndicator(true));
+        handler.postDelayed(() -> flowersView.displayLoadingIndicator(false), 5000);
     }
 
     @Override

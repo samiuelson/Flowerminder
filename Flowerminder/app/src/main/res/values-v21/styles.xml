@@ -9,6 +9,7 @@
         <item name="android:textViewStyle">@style/AppTheme.TextView</item>
         <item name="android:windowBackground">@color/colorPrimary</item>
         <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
-        <item name="android:colorEdgeEffect">#c62a75</item>
+        <item name="android:colorEdgeEffect">@color/colorAccent2</item>
     </style>
+
 </resources>

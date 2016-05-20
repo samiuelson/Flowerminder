@@ -3,6 +3,7 @@ package me.urbanowicz.samuel.flowerminder.flowers;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -21,8 +22,8 @@ public class FlowersFragment extends Fragment implements FlowersContract.View {
     private FlowersContract.Presenter presenter;
     private View noItemsView;
     private FlowersRecyclerAdapter adapter;
-    private View progressView;
     private RecyclerView recycler;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     public static FlowersFragment newInstance() {
         return new FlowersFragment();
@@ -41,9 +42,18 @@ public class FlowersFragment extends Fragment implements FlowersContract.View {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         noItemsView = view.findViewById(R.id.no_items_view);
-        progressView = view.findViewById(R.id.progress);
+
+        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh);
+        swipeRefreshLayout.setOnRefreshListener(() -> presenter.actionRefresh());
+        swipeRefreshLayout.setColorSchemeResources(
+                R.color.colorAccent2,
+                R.color.colorAccent,
+                R.color.colorPrimary
+        );
+
         recycler = (RecyclerView) view.findViewById(R.id.flowers_recycler);
         recycler.setLayoutManager(new LinearLayoutManager(view.getContext()));
+
         adapter = new FlowersRecyclerAdapter();
 
         setHasOptionsMenu(true);
@@ -64,7 +74,7 @@ public class FlowersFragment extends Fragment implements FlowersContract.View {
 
     @Override
     public void displayLoadingIndicator(boolean active) {
-        progressView.setVisibility(active? View.VISIBLE : View.INVISIBLE);
+        swipeRefreshLayout.setRefreshing(active);
     }
 
     @Override

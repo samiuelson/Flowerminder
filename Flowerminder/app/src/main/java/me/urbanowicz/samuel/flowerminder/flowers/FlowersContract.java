@@ -14,6 +14,8 @@ public interface FlowersContract {
         void actionConfigure();
 
         void actionInfo();
+
+        void actionRefresh();
     }
 
     interface View extends BaseView<Presenter> {
