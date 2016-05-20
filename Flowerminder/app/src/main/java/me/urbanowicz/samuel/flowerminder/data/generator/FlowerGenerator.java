@@ -31,8 +31,7 @@ public class FlowerGenerator {
         return nextMonthFlowers;
     }
 
-    //default
-    static List<Flower> deleteAnyFutureFlowers(List<Flower> flowers) {
+    /*default*/ static List<Flower> deleteAnyFutureFlowers(List<Flower> flowers) {
         final List<Flower> flowersFromPast = Lists.newArrayList();
 
         Observable<Flower> flowersObservable = Observable.from(flowers);

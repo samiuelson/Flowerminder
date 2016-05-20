@@ -1,5 +1,10 @@
 package me.urbanowicz.samuel.flowerminder.data.store;
 
+import com.google.common.collect.Lists;
+
+import java.util.Collections;
+import java.util.List;
+
 import me.urbanowicz.samuel.flowerminder.data.Flower;
 
 public class FlowersRepository implements DataStore.MultipleEntities<Flower> {
@@ -35,6 +40,9 @@ public class FlowersRepository implements DataStore.MultipleEntities<Flower> {
 
     @Override
     public Iterable<Flower> getAll() {
-        return flowersStorage.getAll();
+        List<Flower> flowers = Lists.newArrayList(flowersStorage.getAll());
+        Collections.sort(flowers);
+        Collections.reverse(flowers);
+        return flowers;
     }
 }
