@@ -12,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import me.urbanowicz.samuel.flowerminder.R;
@@ -42,6 +43,8 @@ public class FlowersFragment extends Fragment implements FlowersContract.View {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         noItemsView = view.findViewById(R.id.no_items_view);
+        ImageView noItemsIcon = (ImageView) view.findViewById(R.id.no_items_icon);
+        noItemsIcon.setColorFilter(getResources().getColor(android.R.color.primary_text_dark));
 
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh);
         swipeRefreshLayout.setOnRefreshListener(() -> presenter.actionRefresh());
