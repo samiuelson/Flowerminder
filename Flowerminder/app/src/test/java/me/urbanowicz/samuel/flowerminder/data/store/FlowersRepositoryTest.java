@@ -1,9 +1,12 @@
 package me.urbanowicz.samuel.flowerminder.data.store;
 
+import com.google.common.collect.Lists;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import me.urbanowicz.samuel.flowerminder.data.Flower;
@@ -23,6 +26,13 @@ public class FlowersRepositoryTest {
     setupForTest() {
         MockitoAnnotations.initMocks(this);
         flowersRepository = FlowersRepository.getInstance(flowersStorage);
+
+        Mockito.when(flowersStorage.getAll()).thenReturn(
+                Lists.newArrayList(
+                        Mocks.generateRandomFlowerForPastDate(),
+                        Mocks.generateRandomFlowerForPastDate(),
+                        Mocks.generateRandomFlowerForPastDate())
+        );
     }
 
     @After
