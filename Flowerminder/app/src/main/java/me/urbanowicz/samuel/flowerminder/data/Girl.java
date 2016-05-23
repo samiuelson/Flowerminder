@@ -1,7 +1,10 @@
 package me.urbanowicz.samuel.flowerminder.data;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
+
+import static com.google.common.base.Preconditions.checkNotNull;
 
 public class Girl {
 
@@ -20,9 +23,11 @@ public class Girl {
         this.desiredFlowersPerMonth = desiredFlowersPerMonth;
         this.eyesColor = eyesColor;
         this.hairColor = hairColor;
+        this.importantAnniversariesDates = new HashMap<>();
     }
 
     public Map<String, Date> getImportantAnniversariesDates() {
+        checkNotNull(importantAnniversariesDates);
         return importantAnniversariesDates;
     }
 
@@ -41,6 +46,7 @@ public class Girl {
     public String getName() {
         return name;
     }
+
 
     public static class Builder {
         String name;

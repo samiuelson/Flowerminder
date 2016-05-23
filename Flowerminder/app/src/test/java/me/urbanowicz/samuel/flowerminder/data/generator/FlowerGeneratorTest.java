@@ -36,14 +36,12 @@ public class FlowerGeneratorTest {
     setupBeforeTest() {
         MockitoAnnotations.initMocks(this);
 
-        Mockito
-                .when(flowersRepository.getAll())
-                .thenReturn(
-                        Lists.newArrayList(
-                                Mocks.generateRandomFlowerForPastDate(),
-                                Mocks.generateRandomFlowerForPastDate(),
-                                Mocks.generateRandomFlowerForPastDate())
-                );
+        Mockito.when(flowersRepository.getAll()).thenReturn(
+                Lists.newArrayList(
+                        Mocks.generateRandomFlowerForPastDate(),
+                        Mocks.generateRandomFlowerForPastDate(),
+                        Mocks.generateRandomFlowerForPastDate())
+        );
 
         girl = Mocks.generateGirl();
         flowerGenerator = new FlowerGenerator(girl, flowersRepository.getAll());
@@ -52,8 +50,6 @@ public class FlowerGeneratorTest {
     @Test
     public void
     deleteAnyFutureFlowers_shouldDeleteAnyFutureFlowers() {
-        assertNotNull(flowersRepository.getAll());
-
         // Given list of flowers: one with future date, one with past date
         List<Flower> flowers = Lists.newArrayList(
                 generateRandomFlowerForPastDate(),
@@ -72,5 +68,24 @@ public class FlowerGeneratorTest {
                 });
     }
 
+    @Test
+    public void
+    generateFlowersForNextMonth_shouldGenerateFlowersWithFutureDates() {
+        // Given collection of flowers
+        List<Flower> flowers = Lists.newArrayList(flowersRepository.getAll());
+        assertNotNull(flowers);
+
+        // When generate FlowersForNextMonth called
+        flowers = Lists.newArrayList(flowerGenerator.generateFlowersForNextMonth());
+        assertNotNull(flowers);
+
+        // Then it should return proper number of flowers
+        assertTrue(flowers.size() > 0);
+        // All with future dates
+        Date date = new Date();
+        for (Flower flower : flowers) {
+            assertTrue(flower.getDate().compareTo(date) > 0);
+        }
+    }
 
 }
