@@ -12,7 +12,7 @@ public class FlowersPresenter implements FlowersContract.Presenter {
 
     public FlowersPresenter(FlowersContract.View view, FlowersRepository flowersRepository) {
         this.flowersView = view;
-        flowersView.setPresenter(this);
+        this.flowersView.setPresenter(this);
         this.flowersRepository = flowersRepository;
     }
 

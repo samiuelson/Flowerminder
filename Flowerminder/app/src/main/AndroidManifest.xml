@@ -18,6 +18,8 @@
         <activity android:name="me.urbanowicz.samuel.flowerminder.flowers.FlowersActivity"
             android:launchMode="singleInstance"/>
 
+        <activity android:name=".info.InfoActivity" />
+
     </application>
 
 </manifest>
