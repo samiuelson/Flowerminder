@@ -94,11 +94,13 @@ public class FlowersFragment extends Fragment implements FlowersContract.View {
     @Override
     public void displayGirlSetupView() {
         startActivity(new Intent(getActivity(), GirlActivity.class));
+        getActivity().overridePendingTransition(0, 0);
     }
 
     @Override
     public void displayInfoView() {
         startActivity(new Intent(getActivity(), InfoActivity.class));
+        getActivity().overridePendingTransition(0, 0);
     }
 
     @Override

@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import me.urbanowicz.samuel.flowerminder.R;
+
 public class InfoFragment extends Fragment implements InfoContract.View {
 
     public static InfoFragment newInstance() {
@@ -16,7 +18,7 @@ public class InfoFragment extends Fragment implements InfoContract.View {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
+        return inflater.inflate(R.layout.info_fragment, container, false);
     }
 
     @Override

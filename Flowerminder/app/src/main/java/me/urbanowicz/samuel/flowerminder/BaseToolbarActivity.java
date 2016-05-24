@@ -61,4 +61,10 @@ public abstract class BaseToolbarActivity<F extends Fragment> extends AppCompatA
 
     public abstract boolean showBackButton();
 
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+    }
+
 }
