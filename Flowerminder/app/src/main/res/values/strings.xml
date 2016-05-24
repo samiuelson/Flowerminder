@@ -5,4 +5,10 @@
     <string name="flowers_fragment_menu_info">Info</string>
     <string name="flowers_fragment_title">Flowers</string>
     <string name="flowers_toolbar_title">Flowers</string>
+    <string name="info_fragment_label">Flowerminder 0.1</string>
+    <string name="info_fragment_about_text">Geeky flower reminder Android app. Keeping your loved one feeling
+        surprised and fabulous since 2016.
+        \n\nProudly designed &amp; developed by <b>Samuel Urbanowicz</b>
+        \n\nReport bugs or request features: https://github.com/samiuelson/flowerminder/issues
+    </string>
 </resources>

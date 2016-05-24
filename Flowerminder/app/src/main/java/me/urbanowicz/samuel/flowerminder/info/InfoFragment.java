@@ -27,6 +27,16 @@ public class InfoFragment extends Fragment implements InfoContract.View {
     }
 
     @Override
+    public void goToGooglePlay() {
+
+    }
+
+    @Override
+    public void goToGitHub() {
+
+    }
+
+    @Override
     public void setPresenter(InfoContract.Presenter presenter) {
 
     }
