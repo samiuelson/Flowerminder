@@ -1,5 +1,8 @@
 package me.urbanowicz.samuel.flowerminder.data.store;
 
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+
 import me.urbanowicz.samuel.flowerminder.data.Girl;
 
 public class GirlRepository implements DataStore.SingleEntity<Girl> {
@@ -25,17 +28,17 @@ public class GirlRepository implements DataStore.SingleEntity<Girl> {
     }
 
     @Override
-    public void save(Girl entity) {
+    public void save(@NonNull Girl entity) {
         girlStorage.save(entity);
     }
 
     @Override
-    public void delete(Girl entity) {
+    public void delete(@NonNull Girl entity) {
         girlStorage.delete(entity);
     }
 
     @Override
-    public Girl get() {
+    public @Nullable Girl get() {
         return girlStorage.get();
     }
 

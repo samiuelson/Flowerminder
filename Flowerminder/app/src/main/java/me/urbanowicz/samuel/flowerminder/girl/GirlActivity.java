@@ -1,27 +1,26 @@
-package me.urbanowicz.samuel.flowerminder.info;
+package me.urbanowicz.samuel.flowerminder.girl;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import me.urbanowicz.samuel.flowerminder.BaseToolbarActivity;
 
-public class InfoActivity extends BaseToolbarActivity<InfoFragment> {
+public class GirlActivity extends BaseToolbarActivity<GirlFragment> {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        new InfoPresenter(getFragment());
+        new GirlPresenter(getFragment());
     }
 
     @Override
     public String getToolbarTitle() {
-        return "Info";
+        return "Config";
     }
 
     @Override
-    public InfoFragment createNewFragmentInstance() {
-        return InfoFragment.newInstance();
+    public GirlFragment createNewFragmentInstance() {
+        return GirlFragment.newInstance();
     }
 
     @Override

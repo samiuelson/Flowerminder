@@ -15,20 +15,26 @@ public class FlowersActivity extends BaseToolbarActivity<FlowersFragment> {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        FlowersPresenter presenter = new FlowersPresenter(
+        new FlowersPresenter(
                 getFragment(),
-                Injection.getFlowersRepository()
+                Injection.getFlowersRepository(),
+                Injection.getGirlRepository()
         );
 
     }
 
     @Override
     public String getToolbarTitle() {
-        return "Flowers";
+        return getString(R.string.flowers_toolbar_title);
     }
 
     @Override
     public FlowersFragment createNewFragmentInstance() {
         return FlowersFragment.newInstance();
+    }
+
+    @Override
+    public boolean showBackButton() {
+        return false;
     }
 }

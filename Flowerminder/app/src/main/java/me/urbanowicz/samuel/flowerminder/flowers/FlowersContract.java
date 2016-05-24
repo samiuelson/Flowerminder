@@ -25,6 +25,12 @@ public interface FlowersContract {
 
         void displayNoFlowersInfo();
 
+        void displayGirlSetupView();
+
+        void displayInfoView();
+
         void showToast(String string);
+
+        void showNoGirlWarning();
     }
 }

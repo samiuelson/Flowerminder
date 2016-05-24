@@ -1,7 +1,9 @@
 package me.urbanowicz.samuel.flowerminder.flowers;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,6 +19,10 @@ import android.widget.Toast;
 
 import me.urbanowicz.samuel.flowerminder.R;
 import me.urbanowicz.samuel.flowerminder.data.Flower;
+import me.urbanowicz.samuel.flowerminder.girl.GirlActivity;
+import me.urbanowicz.samuel.flowerminder.info.InfoActivity;
+
+import static com.google.common.base.Preconditions.checkNotNull;
 
 public class FlowersFragment extends Fragment implements FlowersContract.View {
 
@@ -86,8 +92,29 @@ public class FlowersFragment extends Fragment implements FlowersContract.View {
     }
 
     @Override
+    public void displayGirlSetupView() {
+        startActivity(new Intent(getActivity(), GirlActivity.class));
+    }
+
+    @Override
+    public void displayInfoView() {
+        startActivity(new Intent(getActivity(), InfoActivity.class));
+    }
+
+    @Override
     public void showToast(String string) {
         Toast.makeText(getActivity(), string, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void showNoGirlWarning() {
+        checkNotNull(getView());
+        Snackbar snackbar = Snackbar.make(getView(),
+                "You haven't set up details about your loved one yet.",
+                Snackbar.LENGTH_INDEFINITE);
+                snackbar.setAction("Set up",
+                        v -> { displayGirlSetupView(); snackbar.dismiss(); })
+                .show();
     }
 
     @Override

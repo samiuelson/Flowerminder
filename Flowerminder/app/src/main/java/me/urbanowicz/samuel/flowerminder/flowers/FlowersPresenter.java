@@ -2,18 +2,27 @@ package me.urbanowicz.samuel.flowerminder.flowers;
 
 import android.os.Handler;
 
+import java.util.Iterator;
+
 import me.urbanowicz.samuel.flowerminder.data.Flower;
 import me.urbanowicz.samuel.flowerminder.data.store.FlowersRepository;
+import me.urbanowicz.samuel.flowerminder.data.store.GirlRepository;
+
+import static com.google.common.base.Preconditions.checkNotNull;
 
 public class FlowersPresenter implements FlowersContract.Presenter {
 
     private FlowersContract.View flowersView;
     private FlowersRepository flowersRepository;
+    private final GirlRepository girlRepository;
 
-    public FlowersPresenter(FlowersContract.View view, FlowersRepository flowersRepository) {
+    public FlowersPresenter(FlowersContract.View view,
+                            FlowersRepository flowersRepository,
+                            GirlRepository girlRepository) {
         this.flowersView = view;
         this.flowersView.setPresenter(this);
         this.flowersRepository = flowersRepository;
+        this.girlRepository = girlRepository;
     }
 
     @Override
@@ -21,7 +30,9 @@ public class FlowersPresenter implements FlowersContract.Presenter {
         Handler handler = new Handler();
         handler.post(() -> flowersView.displayLoadingIndicator(true));
 
-        if (flowersRepository.getAll().iterator().hasNext()) {
+        Iterable<Flower> flowers = flowersRepository.getAll();
+        checkNotNull(flowers);
+        if (flowers.iterator().hasNext()) {
             flowersView.displayFlowers(flowersRepository.getAll());
         } else {
             flowersView.displayNoFlowersInfo();
@@ -37,12 +48,12 @@ public class FlowersPresenter implements FlowersContract.Presenter {
 
     @Override
     public void actionConfigure() {
-        flowersView.showToast("Not implemented");
+        flowersView.displayGirlSetupView();
     }
 
     @Override
     public void actionInfo() {
-        flowersView.showToast("Not implemented");
+        flowersView.displayInfoView();
     }
 
     @Override
@@ -55,6 +66,9 @@ public class FlowersPresenter implements FlowersContract.Presenter {
 
     @Override
     public void start() {
+        if (girlRepository.get() == null) {
+            flowersView.showNoGirlWarning();
+        }
         loadTasks();
     }
 }
