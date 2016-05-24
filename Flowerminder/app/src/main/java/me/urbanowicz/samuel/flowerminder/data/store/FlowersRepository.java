@@ -1,5 +1,8 @@
 package me.urbanowicz.samuel.flowerminder.data.store;
 
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+
 import com.google.common.collect.Lists;
 
 import java.util.Collections;
@@ -29,17 +32,17 @@ public class FlowersRepository implements DataStore.MultipleEntities<Flower> {
     }
 
     @Override
-    public void save(Flower entity) {
+    public void save(@NonNull Flower entity) {
         flowersStorage.save(entity);
     }
 
     @Override
-    public void delete(Flower entity) {
+    public void delete(@NonNull Flower entity) {
         flowersStorage.delete(entity);
     }
 
     @Override
-    public Iterable<Flower> getAll() {
+    public @Nullable Iterable<Flower> getAll() {
         List<Flower> flowers = Lists.newArrayList(flowersStorage.getAll());
         Collections.sort(flowers);
         Collections.reverse(flowers);

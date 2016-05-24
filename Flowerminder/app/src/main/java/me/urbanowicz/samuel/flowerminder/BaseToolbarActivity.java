@@ -3,9 +3,13 @@ package me.urbanowicz.samuel.flowerminder;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.TextView;
+
+import static com.google.common.base.Preconditions.checkNotNull;
 
 public abstract class BaseToolbarActivity<F extends Fragment> extends AppCompatActivity {
 
@@ -16,10 +20,19 @@ public abstract class BaseToolbarActivity<F extends Fragment> extends AppCompatA
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.base_toolbar_activity);
-        ((TextView) findViewById(R.id.toolbar_title)).setText(getToolbarTitle());
+        TextView title = (TextView) findViewById(R.id.toolbar_title);
+        checkNotNull(title);
+        title.setText(getToolbarTitle());
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setTitle(null);
+
+        if (showBackButton()) {
+            ActionBar actionBar = getSupportActionBar();
+            checkNotNull(actionBar);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setDisplayShowHomeEnabled(true);
+        }
 
         fragment = (F) getSupportFragmentManager().findFragmentById(R.id.container);
 
@@ -32,6 +45,12 @@ public abstract class BaseToolbarActivity<F extends Fragment> extends AppCompatA
         }
     }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
     public @Nullable F getFragment() {
         return fragment;
     }
@@ -39,5 +58,7 @@ public abstract class BaseToolbarActivity<F extends Fragment> extends AppCompatA
     public abstract String getToolbarTitle();
 
     public abstract F createNewFragmentInstance();
+
+    public abstract boolean showBackButton();
 
 }

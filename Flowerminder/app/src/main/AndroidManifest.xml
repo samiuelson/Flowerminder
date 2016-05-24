@@ -20,6 +20,8 @@
 
         <activity android:name=".info.InfoActivity" />
 
+        <activity android:name=".girl.GirlActivity" />
+
     </application>
 
 </manifest>

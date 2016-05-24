@@ -1,5 +1,7 @@
 package me.urbanowicz.samuel.flowerminder.data.store;
 
+import android.support.annotation.Nullable;
+
 public interface DataStore {
 
     /**
@@ -7,9 +9,9 @@ public interface DataStore {
      * @param <E> class of entity to be stored
      */
     interface MultipleEntities<E> {
-        void save(E entity);
-        void delete(E entity);
-        Iterable<E> getAll();
+        void save(@Nullable E entity);
+        void delete(@Nullable E entity);
+        @Nullable Iterable<E> getAll();
     }
 
     /**
@@ -17,9 +19,9 @@ public interface DataStore {
      * @param <E> class of entity to be stored
      */
     interface SingleEntity<E> {
-        void save(E entity);
-        void delete(E entity);
-        E get();
+        void save(@Nullable E entity);
+        void delete(@Nullable E entity);
+        @Nullable E get();
     }
 
 }
