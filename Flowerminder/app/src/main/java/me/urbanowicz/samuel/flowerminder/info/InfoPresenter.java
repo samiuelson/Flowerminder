@@ -11,7 +11,6 @@ public class InfoPresenter implements InfoContract.Presenter {
     @Override
     public void start() {
         infoView.setPresenter(this);
-        infoView.showInfoView();
     }
 
     @Override

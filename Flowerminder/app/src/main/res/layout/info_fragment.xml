@@ -55,6 +55,7 @@
                     android:background="#22ffffff" />
 
                 <Button
+                    android:id="@+id/rate_btn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -62,6 +63,7 @@
                     android:text="Rate on GooglePlay" />
 
                 <Button
+                    android:id="@+id/github_btn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"

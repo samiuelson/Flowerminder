@@ -7,8 +7,6 @@ public interface InfoContract {
 
     interface View extends BaseView<Presenter> {
 
-        void showInfoView();
-
         void goToGooglePlay();
 
         void goToGitHub();
