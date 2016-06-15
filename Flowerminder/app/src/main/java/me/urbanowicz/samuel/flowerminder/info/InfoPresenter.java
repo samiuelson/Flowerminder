@@ -13,4 +13,14 @@ public class InfoPresenter implements InfoContract.Presenter {
         infoView.setPresenter(this);
         infoView.showInfoView();
     }
+
+    @Override
+    public void goToGooglePlayPressed() {
+        infoView.goToGooglePlay();
+    }
+
+    @Override
+    public void forkOnGitHubPressed() {
+        infoView.goToGitHub();
+    }
 }

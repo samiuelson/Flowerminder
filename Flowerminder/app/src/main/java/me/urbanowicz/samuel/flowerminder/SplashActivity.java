@@ -12,6 +12,8 @@ import android.view.animation.DecelerateInterpolator;
 
 import me.urbanowicz.samuel.flowerminder.flowers.FlowersActivity;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -19,6 +21,7 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.splash_activity);
 
         View content = findViewById(R.id.splash_content);
+        checkNotNull(content);
 
         AlphaAnimation alphaAnimation = new AlphaAnimation(1.f, 0.f);
         alphaAnimation.setDuration(500);

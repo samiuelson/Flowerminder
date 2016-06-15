@@ -17,26 +17,13 @@
 
     </android.support.v4.widget.SwipeRefreshLayout>
 
-    <LinearLayout
-        android:id="@+id/no_items_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center">
-
-        <ImageView
-            android:id="@+id/no_items_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_flower"/>
-
         <TextView
+            android:id="@+id/no_items_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:textSize="22sp"
+            android:fontFamily="sans-serif-thin"
             android:text="@string/flowers_no_items"/>
-
-    </LinearLayout>
 
 </FrameLayout>

@@ -14,7 +14,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import me.urbanowicz.samuel.flowerminder.R;
@@ -36,6 +35,12 @@ public class FlowersFragment extends Fragment implements FlowersContract.View {
         return new FlowersFragment();
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setRetainInstance(true);
+    }
+
     @Nullable
     @Override
     public View onCreateView(
@@ -49,8 +54,6 @@ public class FlowersFragment extends Fragment implements FlowersContract.View {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         noItemsView = view.findViewById(R.id.no_items_view);
-        ImageView noItemsIcon = (ImageView) view.findViewById(R.id.no_items_icon);
-        noItemsIcon.setColorFilter(getResources().getColor(android.R.color.primary_text_dark));
 
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh);
         swipeRefreshLayout.setOnRefreshListener(() -> presenter.actionRefresh());
@@ -94,11 +97,13 @@ public class FlowersFragment extends Fragment implements FlowersContract.View {
     @Override
     public void displayGirlSetupView() {
         startActivity(new Intent(getActivity(), GirlActivity.class));
+        getActivity().overridePendingTransition(0, 0);
     }
 
     @Override
     public void displayInfoView() {
         startActivity(new Intent(getActivity(), InfoActivity.class));
+        getActivity().overridePendingTransition(0, 0);
     }
 
     @Override
