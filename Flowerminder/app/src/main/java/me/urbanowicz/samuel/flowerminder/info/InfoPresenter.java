@@ -16,11 +16,11 @@ public class InfoPresenter implements InfoContract.Presenter {
 
     @Override
     public void goToGooglePlayPressed() {
-
+        infoView.goToGooglePlay();
     }
 
     @Override
     public void forkOnGitHubPressed() {
-
+        infoView.goToGitHub();
     }
 }

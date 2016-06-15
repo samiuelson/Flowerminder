@@ -14,7 +14,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import me.urbanowicz.samuel.flowerminder.R;
@@ -34,6 +33,12 @@ public class FlowersFragment extends Fragment implements FlowersContract.View {
 
     public static FlowersFragment newInstance() {
         return new FlowersFragment();
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setRetainInstance(true);
     }
 
     @Nullable
